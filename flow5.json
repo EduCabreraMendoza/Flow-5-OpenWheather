@@ -1,0 +1,111 @@
+[
+    {
+        "id": "43dcd0b4eacd0a31",
+        "type": "tab",
+        "label": "Flow 5",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "1aceb7f39242269c",
+        "type": "inject",
+        "z": "43dcd0b4eacd0a31",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 100,
+        "wires": [
+            [
+                "cc6ac4657175af11"
+            ]
+        ]
+    },
+    {
+        "id": "cc6ac4657175af11",
+        "type": "http request",
+        "z": "43dcd0b4eacd0a31",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.openweathermap.org/data/2.5/weather?lat=19.354509&lon=-99.236450&appid=2bf374faf97f87e009a827a0832fd0e7&units=metric",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 310,
+        "y": 100,
+        "wires": [
+            [
+                "5965bc1531cd831f",
+                "c1ae85a7418577f7"
+            ]
+        ]
+    },
+    {
+        "id": "5965bc1531cd831f",
+        "type": "json",
+        "z": "43dcd0b4eacd0a31",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 530,
+        "y": 100,
+        "wires": [
+            [
+                "22633e3440bf8fbe"
+            ]
+        ]
+    },
+    {
+        "id": "c1ae85a7418577f7",
+        "type": "debug",
+        "z": "43dcd0b4eacd0a31",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "22633e3440bf8fbe",
+        "type": "debug",
+        "z": "43dcd0b4eacd0a31",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 160,
+        "wires": []
+    }
+]
