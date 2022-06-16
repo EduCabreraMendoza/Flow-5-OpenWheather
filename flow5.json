@@ -21,7 +21,7 @@
                 "vt": "str"
             }
         ],
-        "repeat": "120",
+        "repeat": "180",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
@@ -44,7 +44,7 @@
         "method": "GET",
         "ret": "txt",
         "paytoqs": "ignore",
-        "url": "https://api.openweathermap.org/data/2.5/weather?lat=19.354509&lon=-99.236450&appid=2bf374faf97f87e009a827a0832fd0e7&units=metric",
+        "url": "https://api.openweathermap.org/data/2.5/onecall?lat=19.354509&lon=-99.236450&exclude=hourly,daily&appid=2bf374faf97f87e009a827a0832fd0e7&units=metric",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -71,7 +71,8 @@
         "wires": [
             [
                 "d6882bb8f8b4eab2",
-                "0c111840a9b32a08"
+                "0c111840a9b32a08",
+                "79ef4c446da50315"
             ]
         ]
     },
@@ -80,7 +81,7 @@
         "type": "function",
         "z": "43dcd0b4eacd0a31",
         "name": "Temperatura",
-        "func": "msg.payload = msg.payload.main.temp;\nglobal.set (\"tempFlow5\",msg.payload);\nreturn msg;",
+        "func": "msg.payload = msg.payload.current.temp;\nglobal.set (\"tempFlow5\",msg.payload);\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -99,7 +100,7 @@
         "type": "function",
         "z": "43dcd0b4eacd0a31",
         "name": "Humedad",
-        "func": "msg.payload = msg.payload.main.humidity;\nglobal.set (\"humFlow5\",msg.payload);\nreturn msg;",
+        "func": "msg.payload = msg.payload.current.humidity;\nglobal.set (\"humFlow5\",msg.payload);\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -119,24 +120,24 @@
         "z": "43dcd0b4eacd0a31",
         "name": "",
         "group": "450ded11e4d5f7a6",
-        "order": 0,
+        "order": 2,
         "width": 0,
         "height": 0,
         "gtype": "gage",
-        "title": "gauge",
+        "title": "Temperatura",
         "label": "units",
         "format": "{{value}}",
         "min": "2",
         "max": "38",
         "colors": [
-            "#00b500",
-            "#e6e600",
+            "#0094ce",
+            "#73d216",
             "#ca3838"
         ],
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 930,
+        "x": 950,
         "y": 100,
         "wires": []
     },
@@ -146,24 +147,24 @@
         "z": "43dcd0b4eacd0a31",
         "name": "",
         "group": "450ded11e4d5f7a6",
-        "order": 1,
+        "order": 4,
         "width": 0,
         "height": 0,
         "gtype": "gage",
-        "title": "gauge",
+        "title": "Humedad",
         "label": "units",
         "format": "{{value}}",
         "min": 0,
         "max": "100",
         "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
+            "#8f5902",
+            "#73d216",
+            "#0094ce"
         ],
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 930,
+        "x": 940,
         "y": 160,
         "wires": []
     },
@@ -181,7 +182,7 @@
         "rh": 0,
         "inputs": 0,
         "x": 140,
-        "y": 260,
+        "y": 300,
         "wires": [
             [
                 "d81fa3b3532f55cc"
@@ -197,7 +198,7 @@
         "action": "obj",
         "pretty": false,
         "x": 370,
-        "y": 260,
+        "y": 300,
         "wires": [
             [
                 "e182dc10443ad130",
@@ -217,7 +218,7 @@
         "finalize": "",
         "libs": [],
         "x": 550,
-        "y": 260,
+        "y": 300,
         "wires": [
             [
                 "4fda1e17d1b59a26"
@@ -230,9 +231,9 @@
         "z": "43dcd0b4eacd0a31",
         "name": "",
         "group": "cafe9c35114fd2c3",
-        "order": 0,
-        "width": "12",
-        "height": "6",
+        "order": 1,
+        "width": 12,
+        "height": 6,
         "label": "Temperatura",
         "chartType": "line",
         "legend": "true",
@@ -263,7 +264,7 @@
         "useDifferentColor": false,
         "className": "",
         "x": 750,
-        "y": 260,
+        "y": 300,
         "wires": [
             []
         ]
@@ -280,7 +281,7 @@
         "finalize": "",
         "libs": [],
         "x": 540,
-        "y": 320,
+        "y": 360,
         "wires": [
             [
                 "37760eadcbfc265a"
@@ -293,7 +294,7 @@
         "z": "43dcd0b4eacd0a31",
         "name": "",
         "group": "cafe9c35114fd2c3",
-        "order": 1,
+        "order": 2,
         "width": 0,
         "height": 0,
         "label": "Humedad",
@@ -326,7 +327,7 @@
         "useDifferentColor": false,
         "className": "",
         "x": 740,
-        "y": 320,
+        "y": 360,
         "wires": [
             []
         ]
@@ -353,7 +354,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 130,
-        "y": 460,
+        "y": 500,
         "wires": [
             [
                 "bbbd42ca88b7af2c"
@@ -372,7 +373,7 @@
         "finalize": "",
         "libs": [],
         "x": 360,
-        "y": 460,
+        "y": 500,
         "wires": [
             [
                 "db33918facea3259"
@@ -394,8 +395,64 @@
         "expiry": "",
         "broker": "7067f09cda152ac5",
         "x": 640,
-        "y": 460,
+        "y": 500,
         "wires": []
+    },
+    {
+        "id": "79ef4c446da50315",
+        "type": "function",
+        "z": "43dcd0b4eacd0a31",
+        "name": "UV",
+        "func": "msg.payload = msg.payload.current.uvi;\nglobal.set (\"uviFlow5\",msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 220,
+        "wires": [
+            [
+                "edcf326401930aec"
+            ]
+        ]
+    },
+    {
+        "id": "edcf326401930aec",
+        "type": "ui_gauge",
+        "z": "43dcd0b4eacd0a31",
+        "name": "",
+        "group": "450ded11e4d5f7a6",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "UV",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "15",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "5",
+        "seg2": "7",
+        "className": "",
+        "x": 930,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "da11f0a0128b6f68",
+        "type": "ui_spacer",
+        "z": "43dcd0b4eacd0a31",
+        "name": "spacer",
+        "group": "450ded11e4d5f7a6",
+        "order": 1,
+        "width": 6,
+        "height": 1
     },
     {
         "id": "450ded11e4d5f7a6",
@@ -412,7 +469,7 @@
         "id": "7067f09cda152ac5",
         "type": "mqtt-broker",
         "name": "Broker HiveMQ",
-        "broker": "18.156.8.172",
+        "broker": "18.157.172.72",
         "port": "1883",
         "clientid": "",
         "autoConnect": true,
